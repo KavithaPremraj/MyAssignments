@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import io.github.bonigarcia.wdm.WebDriverManager;
 public class CreateLead {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		WebDriverManager.chromedriver().setup();
 		ChromeDriver driver = new ChromeDriver();
 		driver.get("http://leaftaps.com/opentaps/control/login");
@@ -28,7 +28,10 @@ public class CreateLead {
 		Select dd = new Select(element);
 		dd.selectByVisibleText("Indiana");
 		driver.findElement(By.name("submitButton")).click();
-		System.out.println("The Tittle is :" + driver.getTitle());
+		String createleadtittle = driver.getTitle();
+		System.out.println("The Tittle is :" + createleadtittle);
+		Thread.sleep(2000);
+		driver.close();
 	}
 
 }
