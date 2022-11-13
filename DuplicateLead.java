@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import io.github.bonigarcia.wdm.WebDriverManager;
 public class DuplicateLead {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		WebDriverManager.chromedriver().setup();
 		ChromeDriver driver = new ChromeDriver();
 		driver.get("http://leaftaps.com/opentaps/control/login");
@@ -36,7 +36,10 @@ public class DuplicateLead {
 		elefirstname.clear();
 		elefirstname.sendKeys("Premraj");
 		driver.findElement(By.name("submitButton")).click();
-		System.out.println("The Tittle is :" + driver.getTitle());
+		String duplicatetittle = driver.getTitle();
+		System.out.println("The Tittle is :" + duplicatetittle);
+		Thread.sleep(2000);
+		driver.close();
 	}
 
 }
