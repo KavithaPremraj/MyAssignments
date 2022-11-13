@@ -9,7 +9,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class EditLead {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		WebDriverManager.chromedriver().setup();
 		ChromeDriver driver = new ChromeDriver();
 		driver.get("http://leaftaps.com/opentaps/control/login");
@@ -35,7 +35,10 @@ public class EditLead {
 		driver.findElement(By.name("description")).clear();
 		driver.findElement(By.name("importantNote")).sendKeys("Learning is Important");
 		driver.findElement(By.name("submitButton")).click();
-		System.out.println("The Tittle is:" + driver.getTitle());
+		String Edittittle = driver.getTitle();
+		System.out.println("The Tittle is:" + Edittittle);
+		Thread.sleep(2000);
+		driver.close();
 	}
 
 }
